@@ -3,7 +3,7 @@ from ReBenchCSVDataProcessor import ReBenchCSVDataProcessor
 
 
 """Change this with the path of yout csv file"""
-rebench_csv_path = '~/Documents/ReBenchFiles/reBenchResult.csv'
+rebench_csv_path = '~/Documents/ReBench/reBenchFile.csv'
 
 
 csv_file_path = os.path.expanduser(rebench_csv_path)

@@ -13,21 +13,20 @@ class ReBenchCSVDataProcessor:
 
     def create_data_frame(self):
         try:
-            self.df = pd.read_csv(self.csv_file, sep='\t', on_bad_lines='skip', comment='#')
-            self.group_df_by_benchmarks_and_executions()
+            # on_bad_lines='skip'
+            self.df = pd.read_csv(self.csv_file, sep='\t', comment='#')
         except pd.errors.ParserError as e:
             print(f"Error parsing the CSV file: {e}")
             return
 
-        # Remove useless columns
         columns_to_remove = ['inputSize', 'cores', 'machine', 'varValue', 'extraArgs']
         self.df.drop(columns=columns_to_remove, inplace=True)
-
         # Keep only the total column as it is the one that has the real time to execute value
         self.df = self.df[self.df['criterion'] == 'total']
+        self.group_df_by_benchmarks_and_executions()
 
     def group_df_by_benchmarks_and_executions(self):
-        self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(['mean', "median"])
+        self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(['mean', "median", "count"])
         return self.aggregated_df
 
     def to_latex(self):
