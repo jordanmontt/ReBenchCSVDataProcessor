@@ -27,7 +27,7 @@ class ReBenchCSVDataProcessor:
         self.df = self.df[self.df['criterion'] == 'total']
 
     def group_df_by_benchmarks_and_executions(self):
-        self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(['mean'])
+        self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(['mean', "median"])
         return self.aggregated_df
 
     def to_latex(self):
