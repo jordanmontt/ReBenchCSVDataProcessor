@@ -1,25 +1,41 @@
 # ReBenchCSVDataProcessor
 
-`ReBenchCSVDataProcessor` is a Python class for processing benchmarking data from CSV files. It cleans, aggregates, and exports [ReBench](https://github.com/smarr/ReBench) CSV results in LaTeX, Markdown, or HTML formats.
-
-## TLDR
-
-Adjust the CSV file path and export format in `playground.py` to use `ReBenchCSVDataProcessor` for your benchmarking data and then run `python3 playground.py` in the terminal.
+ReBench CSV Data Processor is a Python tool for processing [ReBench](https://github.com/smarr/ReBench) CSV benchmarking data. Export results in LaTeX, HTML, or Markdown.
 
 ## Usage
 
-In `playground.py`, modify the following:
-
-```python
-rebench_csv_path = '~/Documents/ReBenchFiles/reBenchResult.csv'  # <-----  Update this path to your csv rebench file
-output = rebench_processor.to_latex()  # <------ Change to to_markdown() or to_html() as needed
-```
-
-Then, execute the following command in the terminal:
+To run the ReBench CSV Data Processor, use the following command in your terminal:
 
 ```bash
-python3 playground.py
-``` 
+python3 rebenchProcessor.py <path_to_csv_file> [--format <output_format>]
+```
+
+### Parameters
+
+- `<path_to_csv_file>`: The path to the CSV file containing the benchmarking data.
+- `--format`, `-f`: (Optional) Specify the output format. Choices include:
+  - `latex` or `l`: Export results in LaTeX format (default).
+  - `html` or `h`: Export results in HTML format.
+  - `markdown` or `m`: Export results in Markdown format.
+
+### Examples
+
+1. To process a CSV file and export the results in LaTeX format (default):
+```bash
+python3 rebenchProcessor.py ~/Documents/ReBenchFiles/rebench.csv
+```
+
+2. To process a CSV file and export the results in HTML format:
+
+```bash
+python3 rebenchProcessor.py ~/Documents/ReBenchFiles/rebench.csv --format html
+```
+
+3. To process a CSV file and export the results in Markdown format using the shorthand:
+
+```bash
+python3 rebenchProcessor.py ~/Documents/ReBenchFiles/rebench.csv -f m
+```
 
 ## Requirements
 

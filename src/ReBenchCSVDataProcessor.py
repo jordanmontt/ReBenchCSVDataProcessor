@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 class ReBenchCSVDataProcessor:
@@ -26,7 +27,11 @@ class ReBenchCSVDataProcessor:
         self.group_df_by_benchmarks_and_executions()
 
     def group_df_by_benchmarks_and_executions(self):
-        self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(['mean', "median", "count"])
+        self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(
+            mean='mean',
+            median='median',
+            std='std',
+            std_error=lambda x: x.std() / np.sqrt(len(x)))
         return self.aggregated_df
 
     def to_latex(self):
