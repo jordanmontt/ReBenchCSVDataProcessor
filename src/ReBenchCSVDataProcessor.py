@@ -29,7 +29,7 @@ class ReBenchCSVDataProcessor:
     def group_df_by_benchmarks_and_executions(self):
         self.aggregated_df = self.df.groupby(['benchmark', 'executor'])['value'].agg(
             mean='mean',
-            median='median',
+            # median='median',
             std='std',
             std_error=lambda x: x.std() / np.sqrt(len(x)))
         return self.aggregated_df
