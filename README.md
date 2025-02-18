@@ -41,9 +41,13 @@ python3 rebenchProcessor.py ~/Documents/ReBenchFiles/rebench.csv -f m
 
 - Python 3.x
 - pandas library
+- numpy library
 
-Install pandas with:
 
 ```bash
+# Install pandas
 pip install pandas
+
+#Install numpy
+pip install numpy
 ```
